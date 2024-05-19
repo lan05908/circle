@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>html and Js animation</h1>
+<canvas id="test" width="500" height="500"> </canvas>
+</body>
+<script>
+  let myCanvas = document.getElementById("test");
+  let ctx = myCanvas.getContext("2d");
+  let dx = Math.round((Math.random()*2 -1) * 20);
+  let dy = Math.round((Math.random()*2 -1) * 10);
+  let y = 250;
+  let x = 250;
+  let r = Math.random() * 50 + 15;
+
+  function draw(){
+    ctx.fillStyle = "rgb(30,219,219)";
+    ctx.fillRect(0,0,500,500);
+    ctx.beginPath();
+    let red = Math.round(Math.random() * 256);
+    let green = Math.round(Math.random() * 256);
+    let blue = Math.round(Math.random() * 256);
+    ctx.fillStyle = "rgb(" + red + "," + green + "," + blue + ") ";
+    ctx.arc(x,y,r,0,Math.PI*2, true);
+    ctx.closePath();
+    ctx.fill();
+    if(x < r || x > 500-r){
+      dx = -dx;
+    }
+    if(y < r || y > 500-r){
+      dy = -dy;
+    }
+    x += dx;
+    y += dy;
+  }
+  setInterval(draw,40);
+
+</script>
+</html>
